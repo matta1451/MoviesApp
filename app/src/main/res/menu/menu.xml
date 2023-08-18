@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/movieFragment"
+        android:title="Películas"
+        android:icon="@drawable/ic_movie"/>
+    <item android:id="@+id/favoriteFragment"
+        android:title="Favoritos"
+        android:icon="@drawable/ic_favorite"/>
+    <item android:id="@+id/movieFirestoreFragment"
+        android:title="Películas Firestore"
+        android:icon="@drawable/ic_movie"/>
+    <item android:id="@+id/accountFragment"
+        android:title="Cuenta"
+        android:icon="@drawable/ic_account"/>
+</menu>

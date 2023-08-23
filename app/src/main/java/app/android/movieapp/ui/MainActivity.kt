@@ -1,5 +1,6 @@
 package app.android.movieapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
@@ -18,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         val fragmentView = supportFragmentManager.findFragmentById(R.id.fcv_navigation) as NavHostFragment
         val navController = fragmentView.navController
         binding.bvnStore.setupWithNavController(navController)
+
+        binding.fabAddMovie.setOnClickListener {
+            val intent = Intent(this, RegisterProductoFirestoreActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

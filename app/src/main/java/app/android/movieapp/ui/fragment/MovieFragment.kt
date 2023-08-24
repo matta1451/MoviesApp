@@ -5,18 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.android.movieapp.databinding.FragmentMovieBinding
-import app.android.movieapp.response.MovieResponse
-import app.android.movieapp.retrofit.ApiClient
-import app.android.movieapp.retrofit.ApiService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import app.android.movieapp.ui.adapter.RVMovieAdapter
+import app.android.movieapp.vm.MovieViewModel
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
-    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var viewModel: MovieViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[MovieViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,30 +33,15 @@ class MovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        movieAdapter = MovieAdapter()
-        binding.recyclerView.adapter = movieAdapter
-
-        // Llamar al método para cargar las películas
-        loadMovies()
-    }
-
-    private fun loadMovies() {
-        val apiService = ApiClient.getRetrofitInstance().create(ApiService::class.java)
-        val call = apiService.getPopularMovies("ad7653bc5a772f683c8af65f3b212f5d")
-
-        call.enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                if (response.isSuccessful) {
-                    val movies = response.body()?.results
-                    movieAdapter.setMovies(movies)
-                }
-            }
-
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                // Manejar el error
-            }
+        val adapter = RVMovieAdapter(listOf()) { movie ->
+            val direction = MovieFragmentDirections.actionMovieFragmentToMovieDetalleFragment(movie)
+            findNavController().navigate(direction)
+        }
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
+        viewModel.listarMovies().observe(viewLifecycleOwner, Observer {
+            adapter.movies = it
+            adapter.notifyDataSetChanged()
         })
     }
 }

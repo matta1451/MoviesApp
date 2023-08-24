@@ -8,9 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import app.android.movieapp.R
 import app.android.movieapp.databinding.FragmentAccountBinding
-import app.android.movieapp.ui.LoginActivity
+import app.android.movieapp.ui.activity.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

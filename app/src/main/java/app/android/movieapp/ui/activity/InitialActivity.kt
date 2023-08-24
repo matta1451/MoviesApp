@@ -1,11 +1,10 @@
-package app.android.movieapp.ui
+package app.android.movieapp.ui.activity
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import app.android.movieapp.R
 import app.android.movieapp.databinding.ActivityInitialBinding
 
 class InitialActivity : AppCompatActivity() {

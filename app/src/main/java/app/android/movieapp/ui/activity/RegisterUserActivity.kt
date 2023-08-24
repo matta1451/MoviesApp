@@ -1,4 +1,4 @@
-package app.android.movieapp.ui
+package app.android.movieapp.ui.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import app.android.movieapp.R
 import app.android.movieapp.databinding.ActivityRegisterUserBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

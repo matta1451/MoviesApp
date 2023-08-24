@@ -1,4 +1,4 @@
-package app.android.movieapp.ui
+package app.android.movieapp.ui.activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -14,7 +14,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import app.android.movieapp.databinding.ActivityRegisterProductoFirestoreBinding
-import app.android.movieapp.ui.fragment.MovieFirestoreFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

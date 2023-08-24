@@ -7,19 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.android.movieapp.R
 import app.android.movieapp.databinding.FragmentMovieFirestoreBinding
 import app.android.movieapp.model.Movie
-import com.google.android.gms.tasks.Task
+import app.android.movieapp.ui.adapter.RVMovieFirestoreAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ListResult
-import com.google.firebase.storage.StorageReference
 
 class MovieFirestoreFragment : Fragment() {
     private lateinit var binding: FragmentMovieFirestoreBinding
@@ -61,7 +57,7 @@ class MovieFirestoreFragment : Fragment() {
                 val movies = it.documents
                 for (movie in movies){
                     if(movie.get("title").toString().isNotEmpty()){
-                        val pelicula = Movie(movie.get("title").toString(), movie.get("release_date").toString(),
+                        val pelicula = Movie(0, movie.get("title").toString(), movie.get("release_date").toString(),
                             movie.get("poster_path").toString(), movie.get("overview").toString(),
                             movie.get("vote_average").toString().toDouble())
                         peliculas.add(pelicula)

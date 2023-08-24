@@ -19,19 +19,19 @@
         android:theme="@style/Theme.MovieApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.RegisterProductoFirestoreActivity"
+            android:name=".ui.activity.RegisterProductoFirestoreActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MovieDetailActivity"
+            android:name=".ui.activity.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RegisterUserActivity"
+            android:name=".ui.activity.RegisterUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.InitialActivity"
+            android:name=".ui.activity.InitialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true" />
     </application>
 
